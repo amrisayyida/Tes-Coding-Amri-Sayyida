@@ -1,0 +1,7 @@
+akun buat login
+
+email : admin@gmail.com
+pass : admin
+
+email : admin2@gmail.com
+pass : admin2
