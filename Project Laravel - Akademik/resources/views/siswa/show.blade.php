@@ -45,12 +45,8 @@
                                 <input class="form-control" readonly="readonly" value="{{$tbl_siswa->tgl_lahir}}">
                             </div>
                             <div class="form-group">
-                                <label">Nama Ayah</label>
-                                <input class="form-control" readonly="readonly" value="{{$tbl_siswa->nama_ayah}}">
-                            </div>
-                            <div class="form-group">
-                                <label">Nama Ibu</label>
-                                <input class="form-control" readonly="readonly" value="{{$tbl_siswa->nama_ibu}}">
+                                <label">Nama Wali</label>
+                                <input class="form-control" readonly="readonly" value="{{$tbl_walisiwaa->nama_wali}}">
                             </div>
                             <div class="form-group">
                                 <label>Alamat</label>

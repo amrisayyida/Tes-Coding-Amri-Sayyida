@@ -160,6 +160,13 @@
                                             >Data Kelas
                                         </a>
                                     </li>
+                                    <li class="submenu-item">
+                                        <a
+                                            href="/wali"
+                                            class="submenu-link"
+                                            >Wali Siswa
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="sidebar-item @if(isset($active_siswa))

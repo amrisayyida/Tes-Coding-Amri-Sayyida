@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Siswa;
+use App\Models\WaliSiswa;
 Use File;
 
 class SiswaController extends Controller
@@ -22,8 +23,9 @@ class SiswaController extends Controller
         );
 
         $siswa = Siswa::all();
+        $wali = WaliSiswa::all();
 
-        return view('siswa.list' , $data, ['tbl_siswa' => $siswa]);
+        return view('siswa.list' , $data, ['tbl_siswa' => $siswa, 'tbl_walisiwa' => $wali]);
     }
 
     /**
@@ -46,15 +48,15 @@ class SiswaController extends Controller
             'jenkel' => 'required',
             'tgl_lahir' => 'required',
             'tempat_lahir' => 'required',
-            'nama_ayah' => 'required',
-            'nama_ibu' => 'required',
+            'id_walisiswa' => 'nullable',
             'alamat' => 'required',
             'foto_siswa' => 'required|mimes:jpg,jpeg,png|max:5000',
         ]);
 
         $siswa = new Siswa;
+        $wali = new WaliSiswa;
 
-        $fotoSiswa = time().'.'.$request->foto_siswa->extension();  
+        $fotoSiswa = date('YmdHis').'.'.$request->foto_siswa->extension();  
          
         $request->foto_siswa->move(public_path('image/siswa'), $fotoSiswa);
  
@@ -64,8 +66,7 @@ class SiswaController extends Controller
         $siswa->jenkel = $request->input('jenkel');
         $siswa->tgl_lahir = $request->input('tgl_lahir');
         $siswa->tempat_lahir = $request->input('tempat_lahir');
-        $siswa->nama_ayah = $request->input('nama_ayah');
-        $siswa->nama_ibu = $request->input('nama_ibu');
+        $siswa->id_walisiswa = $request->input('id_walisiswa');
         $siswa->alamat = $request->input('alamat');
         $siswa->foto_siswa = $fotoSiswa;
  
@@ -86,8 +87,10 @@ class SiswaController extends Controller
             'breadcumb1'  => 'Data Master',
             'breadcumb2'  => 'Data Siswa',
         );
+        $wali = WaliSiswa::all();
         $siswa = Siswa::find($id);
-        return view('siswa.show', $data, ['tbl_siswa' => $siswa]);
+        $walii = WaliSiswa::find($id);
+        return view('siswa.show', $data, ['tbl_siswa' => $siswa, 'tbl_walisiwaa' => $walii, 'tbl_walisiwa' => $wali]);
     }
 
     /**
@@ -110,13 +113,13 @@ class SiswaController extends Controller
             'jenkel' => 'required',
             'tgl_lahir' => 'required',
             'tempat_lahir' => 'required',
-            'nama_ayah' => 'required',
-            'nama_ibu' => 'required',
+            'id_walisiswa' => 'required',
             'alamat' => 'required',
             'foto_siswa' => 'mimes:jpg,jpeg,png|max:5000',
         ]);
 
         $siswa = Siswa::find($id);
+        $wali = WaliSiswa::find($id);
 
         if($request->has('foto_siswa')){
             //hapus file lama
@@ -135,8 +138,7 @@ class SiswaController extends Controller
         $siswa->jenkel = $request->input('jenkel');
         $siswa->tgl_lahir = $request->input('tgl_lahir');
         $siswa->tempat_lahir = $request->input('tempat_lahir');
-        $siswa->nama_ayah = $request->input('nama_ayah');
-        $siswa->nama_ibu = $request->input('nama_ibu');
+        $siswa->id_walisiswa = $request->input('id_walisiswa');
         $siswa->alamat = $request->input('alamat');
  
         $siswa->save();

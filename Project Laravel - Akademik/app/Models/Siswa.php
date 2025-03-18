@@ -15,8 +15,7 @@ class Siswa extends Model
         'jenkel',
         'tgl_lahir',
         'tempat_lahir',
-        'nama_ayah',
-        'nama_ibu',
+        'id_walisiswa',
         'foto_siswa',
         'alamat'
     ];
@@ -24,6 +23,11 @@ class Siswa extends Model
     public function siswasiswakelas()
     {
         return $this->hasMany(SiswaKelas::class, 'id_siswa');
+    }
+
+    public function walisiswa()
+    {
+        return $this->belongsTo(WaliSiswa::class, 'id_walisiswa');
     }
 }
 

@@ -76,7 +76,7 @@ role="document"
                 <div class="col">
                     <select name="id_kelas" id="" class="form-control">
                         <option value="" hidden>--Pilih Kelas--</option>
-                        @forelse ($tbl_kelas as $kelass)
+                        @forelse ($tbl_siswakelas->siswaKelas as $kelass)
                             <option value="{{$kelass->nama_kelas}}">{{$kelass->nama_kelas}}</option>
                         @empty
                             <option value="">Belum ada Kelas</option>

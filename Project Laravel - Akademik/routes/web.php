@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\WaliController;
 
 // Login Sistem
 Route::get('/', [AuthController::class, 'index']);
@@ -20,6 +21,9 @@ Route::resource('user', UserController::class);
 
 // Data Siswa
 Route::resource('siswa', SiswaController::class);
+
+// Data Wali
+Route::resource('wali', WaliController::class);
 
 // Kelas
 Route::get('/kelas' , [KelasController::class, 'index']);

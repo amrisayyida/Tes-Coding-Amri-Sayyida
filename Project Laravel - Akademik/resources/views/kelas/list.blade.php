@@ -9,8 +9,8 @@
     
     @include('kelas.create_kelas')
     
-    <hr>
+    {{-- <hr>
     
-    @include('kelas.create_siswakelas')
+    @include('kelas.create_siswakelas') --}}
 
 @endsection

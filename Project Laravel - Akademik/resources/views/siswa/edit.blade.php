@@ -65,13 +65,15 @@ aria-labelledby="myModalLabel16" aria-hidden="true">
                                 <input type="text" class="form-control" name="alamat" id="alamat" value="{{$tbl_siswa->alamat}}" placeholder="Alamat ..." >   
                             </div>
                             <div class="form-group">
-                                <label>Nama Ayah</label>
-                                <input type="text" class="form-control" name="nama_ayah" id="nama_ayah" value="{{$tbl_siswa->nama_ayah}}" placeholder="Nama Ayah ..." >   
-                            </div>
-                            <div class="form-group">
-                                <label>Nama Ibu</label>
-                                <input type="text" class="form-control" name="nama_ibu" id="nama_ibu" value="{{$tbl_siswa->nama_ibu}}" placeholder="Nama Ayah ..." >   
-                            </div>
+                                <label>Wali</label>
+                                <select name="id_walisiswa" id="" class="form-control">
+                                    <option value="" hidden>--Masukan Wali--</option>
+                                    @forelse ($tbl_walisiwa as $waliii)
+                                        <option value="{{$waliii->id}}" selected>{{$waliii->nama_wali}}</option>
+                                    @empty
+                                        <option value="">Empty</option>
+                                    @endforelse
+                                </select>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger"

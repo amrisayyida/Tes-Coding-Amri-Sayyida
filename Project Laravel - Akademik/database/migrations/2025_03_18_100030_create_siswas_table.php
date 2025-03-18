@@ -19,11 +19,12 @@ return new class extends Migration
             $table->enum('jenkel', ['laki - laki','perempuan'])->nullable();
             $table->string('tgl_lahir')->nullable();
             $table->string('tempat_lahir')->nullable();
-            $table->string('nama_ayah')->nullable();
-            $table->string('nama_ibu')->nullable();
+            $table->unsignedBigInteger('id_walisiswa');
             $table->string('foto_siswa')->nullable();
             $table->text('alamat')->nullable();
             $table->timestamps();
+
+            $table->foreign('id_walisiswa')->references('id')->on('tbl_walisiwa');
         });
     }
 
